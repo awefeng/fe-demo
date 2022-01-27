@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# 用node运行我们写的限制脚本
+node ./commit-msg.js $1

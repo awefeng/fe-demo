@@ -1,0 +1,9 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo '1. 执行eslint'
+npm run lint
+echo '2. 执行prettier'
+npx prettier --write
+echo '执行完成，重新添加文件'
+git add -A
