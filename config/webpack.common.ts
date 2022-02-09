@@ -11,7 +11,8 @@ const commonConfig: Configuration = {
   // 输出
   output: {
     filename: '[name].[chunkhash].js',
-    path: resolve(__dirname, '../dist')
+    path: resolve(__dirname, '../dist'),
+    publicPath: '/'
   },
   resolve: {
     alias: {
@@ -47,14 +48,7 @@ const commonConfig: Configuration = {
         test: /\.(tsx?|jsx?)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              '@babel/preset-react',
-              '@babel/preset-env',
-              '@babel/preset-typescript'
-            ]
-          }
+          loader: 'babel-loader'
         }
       },
       {

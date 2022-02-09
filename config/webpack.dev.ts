@@ -13,6 +13,7 @@ const devConfig: Configuration & { devServer: { [key: string]: any } } = {
     static: resolve(__dirname, '../dist'),
     compress: true,
     hot: true,
+    historyApiFallback: true,
     port: 8080
   },
   module: {
