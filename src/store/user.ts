@@ -1,17 +1,19 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
-
+import { USER_ROLE_ENUM } from '@/constants/user'
 export interface UserStateProps {
   userId: string
   name: string
   phone: string
+  role: USER_ROLE_ENUM
 }
 
 const initState = (): UserStateProps => {
   return {
     userId: '',
     name: '',
-    phone: ''
+    phone: '',
+    role: USER_ROLE_ENUM.GUEST
   }
 }
 const userSlice = createSlice({
