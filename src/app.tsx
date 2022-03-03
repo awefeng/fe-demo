@@ -1,27 +1,32 @@
 import ReactDOM from 'react-dom'
 import store from '@/store'
-import './global.less'
+import '@/global.less'
 import 'antd/dist/antd.less'
 import { Provider } from 'react-redux'
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
-import routes, { RouterAuth } from './routes/config'
+import routes from '@/routes/config'
+import { RouterAuth, screenRoutesByRole } from '@/routes/index'
 
 const App: FC = () => {
-  const Element = useRoutes(routes)
+  const { role } = store.getState().user
 
-  return (
-    <Provider store={store}>
-      <RouterAuth>{Element}</RouterAuth>
-    </Provider>
-  )
+  console.log('当前用户角色', role)
+  const curRoutes = useMemo(() => {
+    return screenRoutesByRole(routes)
+  }, [role])
+  const Element = useRoutes(curRoutes)
+
+  return <RouterAuth>{Element}</RouterAuth>
 }
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('app')
 )

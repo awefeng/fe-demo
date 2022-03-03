@@ -5,8 +5,9 @@ import { USER_ROLE_ENUM } from '@/constants/user'
 export interface RouteProps extends RouteObject {
   meta?: {
     auth?: boolean
-    roles?: USER_ROLE_ENUM[]
-    unRoles?: USER_ROLE_ENUM[]
+    // roles和unRoles冲突的时候，冲突的部分以unRoles为准
+    roles?: USER_ROLE_ENUM[] // 空数组代表没有谁可以访问
+    unRoles?: USER_ROLE_ENUM[] // 空数组代表没有谁不可以访问
   }
   children?: RouteProps[]
 }
