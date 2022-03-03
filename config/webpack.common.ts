@@ -2,6 +2,7 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { resolve } from 'path'
 import { Configuration, ProgressPlugin } from 'webpack'
+import LodashWebpackPlugin from 'lodash-webpack-plugin'
 
 const commonConfig: Configuration = {
   // 入口
@@ -62,6 +63,7 @@ const commonConfig: Configuration = {
   },
   plugins: [
     new ProgressPlugin(),
+    new LodashWebpackPlugin(),
     // 打包之前清理dist
     new CleanWebpackPlugin(),
     // 从模板自动生成html

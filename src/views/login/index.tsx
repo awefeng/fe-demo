@@ -1,49 +1,27 @@
 import { FC, Fragment } from 'react'
-import { Form, Input, Button } from 'antd'
+import { Button } from 'antd'
+import { useAuth } from '@/utils/auth'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const Login: FC = () => {
-  const onFinish = (user) => {
-    console.log(user)
-  }
+  const { signIn } = useAuth()
+  const location = useLocation()
+  const navigate = useNavigate()
+  const state: any = location.state
+  const from = state ? state.from : '/'
 
   return (
     <Fragment>
       <h2>欢迎登录</h2>
-      <p>
-        用户名：awe
-        <br />
-        密码：666
-      </p>
-      <Form
-        name='basic'
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
-        initialValues={{ remember: true }}
-        onFinish={onFinish}
-        autoComplete='off'
+      <Button
+        type='primary'
+        onClick={() => {
+          signIn()
+          navigate(from)
+        }}
       >
-        <Form.Item
-          label='用户名'
-          name='username'
-          rules={[{ required: true, message: 'Please input your username!' }]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          label='密码'
-          name='password'
-          rules={[{ required: true, message: 'Please input your password!' }]}
-        >
-          <Input.Password />
-        </Form.Item>
-
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type='primary' htmlType='submit'>
-            登录
-          </Button>
-        </Form.Item>
-      </Form>
+        登录
+      </Button>
     </Fragment>
   )
 }
