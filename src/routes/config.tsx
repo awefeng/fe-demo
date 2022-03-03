@@ -27,7 +27,7 @@ const routes: RouteProps[] = [
         path: 'settings',
         meta: {
           auth: true,
-          roles: [USER_ROLE_ENUM.ADMIN]
+          roles: [USER_ROLE_ENUM.ADMIN, USER_ROLE_ENUM.GUEST]
         },
         element: lazyLoad(lazy(() => import('@/views/settings')))
       },

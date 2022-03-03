@@ -1,6 +1,7 @@
 import { USER_ROLE_ENUM } from '@/constants/user'
 import { dispatch } from '@/store'
 import { init, setUserInfo } from '@/store/user'
+import store from '@/store'
 
 /**
  * 这里本该是读取登录态
@@ -23,11 +24,19 @@ const signOut = () => {
   isLogin = false
   dispatch(init())
 }
+// 角色功能控制
+const canUse = (canUseRole: USER_ROLE_ENUM | USER_ROLE_ENUM[]): boolean => {
+  const { role } = store.getState().user
+
+  if (Array.isArray(canUseRole)) return canUseRole.includes(role)
+  return role === canUseRole
+}
 
 export function useAuth() {
   return {
     signIn,
     signOut,
-    isLogin
+    isLogin,
+    canUse
   }
 }
