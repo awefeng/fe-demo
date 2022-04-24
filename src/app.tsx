@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import store from '@/store'
 import '@/global.less'
 import 'antd/dist/antd.less'
@@ -20,13 +20,15 @@ const App: FC = () => {
   return <RouterAuth>{Element}</RouterAuth>
 }
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById('app')
-)
+export const root = document.getElementById('app')
+
+root &&
+  createRoot(root).render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    </React.StrictMode>
+  )
