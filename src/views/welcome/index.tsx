@@ -23,7 +23,8 @@ const Welcome: FC = () => {
           测试router
         </Button>
         <Link to='/settings'>设置</Link> |{' '}
-        <Link to='/user-center'>用户中心</Link>
+        <Link to='/user-center'>用户中心</Link> |
+        <Link to='/key-test'>测试页</Link>
       </nav>
       <Outlet />
     </Fragment>

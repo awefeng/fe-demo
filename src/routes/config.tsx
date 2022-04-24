@@ -7,12 +7,7 @@ import { lazyLoad } from './index'
 const routes: RouteProps[] = [
   {
     path: '/',
-    element: (
-      <div>
-        主页
-        <Outlet />
-      </div>
-    ),
+    element: <Outlet />,
     children: [
       { index: true, element: <Navigate replace to='/welcome' /> },
       {
@@ -22,6 +17,10 @@ const routes: RouteProps[] = [
       {
         path: 'login',
         element: lazyLoad(lazy(() => import('@/views/login')))
+      },
+      {
+        path: 'key-test',
+        element: lazyLoad(lazy(() => import('@/views/keyTest')))
       },
       {
         path: 'settings',
