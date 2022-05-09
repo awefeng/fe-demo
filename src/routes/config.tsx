@@ -23,6 +23,10 @@ const routes: RouteProps[] = [
         element: lazyLoad(lazy(() => import('@/views/keyTest')))
       },
       {
+        path: 'min-heap',
+        element: lazyLoad(lazy(() => import('@/views/minHeap')))
+      },
+      {
         path: 'settings',
         meta: {
           auth: true,
