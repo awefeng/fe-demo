@@ -51,7 +51,7 @@ export function screenRoutesByRole(routes: RouteProps[]) {
 }
 
 // 路由登录权限组件
-export const RouterAuth: FC = ({ children }) => {
+export const RouterAuth: FC<{ children: any }> = ({ children }) => {
   const { isLogin } = useAuth()
   const location = useLocation()
   const mathchs = matchRoutes(routes, location)

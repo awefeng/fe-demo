@@ -1,7 +1,8 @@
 import { FC, Fragment, useState } from 'react'
 
 const ShowKey: FC = () => {
-  const [list, setList] = useState([1, 2, 3, 4, 5])
+  const arr = new Array(10000).fill('')
+  const [list, setList] = useState(arr)
 
   return (
     <Fragment>
@@ -14,7 +15,7 @@ const ShowKey: FC = () => {
       </button>
       <ul>
         {list.map((item, index) => {
-          return <li key={index}>{item}</li>
+          return <li key={index}>{item + index}</li>
         })}
       </ul>
     </Fragment>
