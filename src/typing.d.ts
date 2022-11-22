@@ -8,8 +8,6 @@ declare module '*.gif'
 declare module '*.bmp'
 declare module '*.tiff'
 
-declare const UMI_ENV: 'test' | 'dev' | 'prod'
-
 declare namespace NodeJS {
   interface ProcessEnv {
     ENV: 'dev' | 'test' | 'prod'
