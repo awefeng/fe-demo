@@ -1,7 +1,6 @@
 import { createRoot } from 'react-dom/client'
 import store from '@/store'
 import '@/global.less'
-import 'antd/dist/antd.less'
 import { Provider } from 'react-redux'
 import React, { FC, useMemo } from 'react'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
