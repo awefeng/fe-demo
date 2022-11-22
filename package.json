@@ -1,6 +1,6 @@
 {
   "name": "demo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "一个示例工程",
   "private": true,
   "scripts": {
