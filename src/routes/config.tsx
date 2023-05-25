@@ -27,6 +27,10 @@ const routes: RouteProps[] = [
         element: lazyLoad(lazy(() => import('@/views/minHeap')))
       },
       {
+        path: 'immer',
+        element: lazyLoad(lazy(() => import('@/views/immer')))
+      },
+      {
         path: 'settings',
         meta: {
           auth: true,
