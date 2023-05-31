@@ -43,7 +43,7 @@ module.exports = {
       {
         code: 100,
         tabWidth: 2,
-        comments: 80
+        comments: 100
       }
     ],
     semi: ['error', 'never'],

@@ -7,9 +7,7 @@ import store from '@/store'
 import routes from './config'
 
 // 懒加载
-export function lazyLoad(
-  Comp: React.LazyExoticComponent<any>
-): React.ReactNode {
+export function lazyLoad(Comp: React.LazyExoticComponent<any>): React.ReactNode {
   return (
     <Suspense
       fallback={

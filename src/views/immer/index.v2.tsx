@@ -1,6 +1,6 @@
-import { FC, Fragment } from 'react'
+import { FC, Fragment, useState } from 'react'
 import { Button, Space } from 'antd'
-import { useImmer } from 'use-immer'
+import { produce } from 'immer'
 
 interface TodoProps {
   readonly name: string
@@ -8,27 +8,41 @@ interface TodoProps {
 }
 
 const ImmerTest: FC = () => {
-  const [myTodos, setMyTodos] = useImmer<TodoProps[]>([])
+  const [myTodos, setMyTodos] = useState<TodoProps[]>([])
   const addMyTodo = () => {
-    setMyTodos((draft) => {
+    const nextTodo = produce(myTodos, (draft) => {
       draft.push({
         name: `${Math.random()} +  测试`,
         time: new Date()
       })
     })
+
+    setMyTodos(nextTodo)
   }
+  const updateMyTodoCurried = produce(
+    (draft: TodoProps[], add: { index: number; todo: Partial<TodoProps> }) => {
+      draft[add.index] = {
+        ...draft[add.index],
+        ...add.todo
+      }
+    }
+  )
   const updateMyTodo = (index: number, todo: Partial<TodoProps>) => {
-    setMyTodos((draft) => {
+    const nextTodo = produce(myTodos, (draft) => {
       draft[index] = {
         ...draft[index],
         ...todo
       }
     })
+
+    setMyTodos(nextTodo)
   }
   const delMyTodo = (index: number) => {
-    setMyTodos((draft) => {
+    const nextTodos = produce(myTodos, (draft) => {
       draft.splice(index, 1)
     })
+
+    setMyTodos(nextTodos)
   }
 
   return (
@@ -48,7 +62,12 @@ const ImmerTest: FC = () => {
         <Button onClick={addMyTodo}>addTodo</Button>
         <Button
           onClick={() => {
-            updateMyTodo(0, { name: `${Math.random()} +  测试` })
+            const nextTodo = updateMyTodoCurried(myTodos, {
+              index: 0,
+              todo: { name: `${Math.random()} +  测试` }
+            })
+
+            setMyTodos(nextTodo)
           }}
         >
           updateTodo
