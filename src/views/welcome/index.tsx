@@ -1,10 +1,12 @@
-import { Button } from 'antd'
+import { Button, Divider } from 'antd'
 import { FC, Fragment } from 'react'
 import styles from './index.less'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const Welcome: FC = () => {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   return (
     <Fragment>
@@ -26,6 +28,8 @@ const Welcome: FC = () => {
         <Link to='/key-test'>测试页</Link>
       </nav>
       <Outlet />
+      <Divider />
+      国际化: {t('welcome')}
     </Fragment>
   )
 }

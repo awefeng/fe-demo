@@ -7,6 +7,7 @@ import { BrowserRouter, useRoutes } from 'react-router-dom'
 import routes from '@/routes/config'
 import { RouterAuth, screenRoutesByRole } from '@/routes/index'
 import { cloneDeep } from 'lodash'
+import './i18n'
 
 const App: FC = () => {
   const { role } = store.getState().user
