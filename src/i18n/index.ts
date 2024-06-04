@@ -16,7 +16,7 @@ i18n
     // i18next-http-backend translation file path
     // https://github.com/i18next/i18next-http-backend
     backend: {
-      path: '../locales/{{lng}}/{{ns}}.json'
+      path: 'asset/locales/{{lng}}/{{ns}}.json'
     }
   })
 
