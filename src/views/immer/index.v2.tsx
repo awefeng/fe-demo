@@ -27,16 +27,15 @@ const ImmerTest: FC = () => {
       }
     }
   )
-  const updateMyTodo = (index: number, todo: Partial<TodoProps>) => {
-    const nextTodo = produce(myTodos, (draft) => {
-      draft[index] = {
-        ...draft[index],
-        ...todo
-      }
-    })
-
-    setMyTodos(nextTodo)
-  }
+  // const updateMyTodo = (index: number, todo: Partial<TodoProps>) => {
+  //   const nextTodo = produce(myTodos, (draft) => {
+  //     draft[index] = {
+  //       ...draft[index],
+  //       ...todo
+  //     }
+  //   })
+  //   setMyTodos(nextTodo)
+  // }
   const delMyTodo = (index: number) => {
     const nextTodos = produce(myTodos, (draft) => {
       draft.splice(index, 1)
